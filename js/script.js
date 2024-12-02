@@ -1,52 +1,29 @@
-// Welcome Message
 document.addEventListener("DOMContentLoaded", () => {
-    alert("Welcome to My Website!");
-});
+    // Define base prices for each product in USD
+    const priceMapping = {
+        USD: [20, 25], // Prices for Product 1 and Product 2 in USD
+        INR: [1600, 2000], // Prices for Product 1 and Product 2 in INR
+        EUR: [17, 21], // Prices for Product 1 and Product 2 in EUR
+    };
 
-// Smooth Scroll for Navigation Links
-const navLinks = document.querySelectorAll("nav ul li a");
+    // Fetch user's location using a free geolocation API
+    fetch('https://ipapi.co/json/')
+        .then(response => response.json())
+        .then(data => {
+            const currency = data.currency || 'INR'; // Default to INR if currency is not found
+            updatePrices(currency);
+        })
+        .catch(() => {
+            updatePrices('INR'); // Fallback to INR if API fails
+        });
 
-navLinks.forEach(link => {
-    link.addEventListener("click", (e) => {
-        e.preventDefault(); // Prevent default anchor behavior
-        const targetId = link.getAttribute("href").substring(1); // Get section ID
-        const targetSection = document.getElementById(targetId);
-        targetSection.scrollIntoView({ behavior: "smooth" });
-    });
-});
-// Form Submission Handling
-const form = document.getElementById("contactForm");
-const formResponse = document.getElementById("formResponse");
-
-form.addEventListener("submit", (e) => {
-    e.preventDefault(); // Prevent form from refreshing the page
-
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const message = document.getElementById("message").value;
-
-    // Simple validation
-    if (name && email && message) {
-        formResponse.textContent = `Thank you, ${name}! We have received your message.`;
-        formResponse.style.display = "block";
-        form.reset();
-    } else {
-        formResponse.textContent = "Please fill out all fields.";
-        formResponse.style.display = "block";
-        formResponse.style.color = "red";
+    // Update the prices based on the detected currency
+    function updatePrices(currency) {
+        const priceElements = document.querySelectorAll(".price");
+        priceElements.forEach((priceElement, index) => {
+            const basePrice = priceMapping[currency] ? priceMapping[currency][index] : priceMapping['INR'][index];
+            const convertedPrice = basePrice.toFixed(2);
+            document.getElementById(`price${index + 1}`).textContent = `${convertedPrice} ${currency}`;
+        });
     }
-});
-// Back-to-Top Button Functionality
-const backToTop = document.getElementById("backToTop");
-
-window.addEventListener("scroll", () => {
-    if (window.scrollY > 200) {
-        backToTop.style.display = "block";
-    } else {
-        backToTop.style.display = "none";
-    }
-});
-
-backToTop.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
 });
