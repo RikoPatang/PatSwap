@@ -1,145 +1,121 @@
-/* General Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Body Styling */
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
-    line-height: 1.6;
-    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
     color: #333;
-    padding: 0 20px;
 }
 
 /* Header Styling */
 header {
-    background: #333;
-    color: #fff;
-    padding: 10px 0;
-    text-align: center;
-}
-
-header h1 {
-    font-size: 2em;
-}
-
-nav ul {
-    list-style: none;
-    padding: 0;
-}
-
-nav ul li {
-    display: inline;
-    margin: 0 10px;
-}
-
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-}
-
-/* Section Styling */
-section {
-    margin: 20px 0;
-    padding: 10px;
-    background: #fff;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-section h2 {
-    color: #333;
-}
-
-/* Footer Styling */
-footer {
-    text-align: center;
-    padding: 10px 0;
-    background: #333;
-    color: #fff;
-    margin-top: 20px;
-}
-/* Form Styling */
-form {
+    background-color: #34495e; /* Brand color */
+    color: white;
+    padding: 15px 20px;
     display: flex;
-    flex-direction: column;
-    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
 }
 
-form input, form textarea, form button {
-    padding: 10px;
+header .logo h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+header nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+header nav ul li {
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Product Grid Styling */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.product-grid h2 {
+    grid-column: span 2;
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.product-card {
+    background-color: white;
     border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.product-card img {
+    max-width: 100%;
     border-radius: 5px;
+    margin-bottom: 10px;
 }
 
-form button {
-    background: #333;
-    color: #fff;
-    cursor: pointer;
+.product-card h3 {
+    font-size: 18px;
+    margin: 10px 0;
 }
 
-form button:hover {
-    background: #555;
-}
-/* Responsive Design */
-
-/* General Layout for Tablets and Smaller Devices */
-@media (max-width: 768px) {
-    header h1 {
-        font-size: 1.8em;
-    }
-
-    nav ul li {
-        display: block; /* Stack navigation links */
-        text-align: center;
-        margin: 5px 0;
-    }
-
-    section {
-        padding: 10px;
-    }
+.product-card .price {
+    font-size: 16px;
+    color: #777;
 }
 
-/* Mobile-Specific Layout */
-@media (max-width: 480px) {
-    body {
-        padding: 10px;
-    }
-
-    header h1 {
-        font-size: 1.5em;
-    }
-
-    nav ul {
-        padding: 0;
-    }
-
-    section h2 {
-        font-size: 1.2em;
-    }
-
-    form input, form textarea, form button {
-        width: 100%; /* Full width inputs */
-    }
-}
-/* Back-to-Top Button Styling */
-#backToTop {
-    display: none;
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #333;
-    color: #fff;
+.product-card button {
+    background-color: #3498db; /* Brand color */
+    color: white;
     border: none;
     padding: 10px 15px;
     border-radius: 5px;
     cursor: pointer;
-    z-index: 1000;
 }
 
-#backToTop:hover {
-    background: #555;
+.product-card button:hover {
+    background-color: #2980b9;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #34495e; /* Brand color */
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+footer .social-links {
+    list-style-type: none;
+    margin: 10px 0 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+footer .social-links li {
+    margin: 0 10px;
+}
+
+footer .social-links li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
 }
